@@ -92,6 +92,8 @@ function Clock() {
         return () => clearInterval(timer);
     }, []);
 
+    // getHours/getMinutes/getSeconds는 컴퓨터의 현지 시각을 숫자로 반환함
+    // String으로 바꾼 뒤 padStart(2, "0")으로 앞을 채움: 9 → "09", 12 → "12"
     const hours = String(nowTime.getHours()).padStart(2, "0");
     const minutes = String(nowTime.getMinutes()).padStart(2, "0");
     const seconds = String(nowTime.getSeconds()).padStart(2, "0");
@@ -108,7 +110,7 @@ function Clock() {
         const message = `안녕하세요 ${name}`;
         → "안녕하세요 철수"
 
-        아래 코드에서는 hours, minutes, seconds를
+        위의 timeString 선언에서는 hours, minutes, seconds를
         HH:MM:SS 형태의 문자열로 결합함
 
         예시 결과: "09:05:03"

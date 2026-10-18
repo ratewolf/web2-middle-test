@@ -21,19 +21,21 @@ function Accommodate() {
         // setCount(count + 1)로 작성해도 동작하지만,
         // 함수형 업데이트는 여러 상태 업데이트가 연속 발생해도
         // 이전 업데이트 결과를 반영하여 계산할 수 있음
+        // Math.min은 두 값 중 작은 값을 반환하므로 최대 정원 20을 넘지 않음
         setCount((count) => Math.min(MAX_CAPACITY, count + 1));
     };
 
     // 퇴장 버튼을 클릭했을 때 실행되는 함수
     const btnDecreaseCount = () => {
         // 이전 상태에서 1을 빼는 함수형 업데이트
+        // Math.max는 두 값 중 큰 값을 반환하므로 0보다 작아지지 않음
         setCount((count) => Math.max(0, count - 1));
     };
 
     return (
         <div>
             {/* JSX에서 {}는 JavaScript 표현식을 사용하는 문법 */}
-            {/* userCount와 MAX_CAPACITY의 값을 화면에 표시함 */}
+            {/* count와 MAX_CAPACITY의 값을 화면에 표시함 */}
             <h1>현재 수용인원: {count}/{MAX_CAPACITY}</h1>
 
             {/* onClick: 버튼 클릭 시 실행할 함수를 지정 */}
@@ -50,7 +52,7 @@ function Accommodate() {
                 왼쪽이 falsy이면 왼쪽 값을 반환하고,
                 truthy이면 오른쪽 값을 반환함
 
-                userCount >= MAX_CAPACITY가 true이면
+                count >= MAX_CAPACITY가 true이면
                 오른쪽의 <p> 요소가 반환되어 화면에 표시됨
 
                 false이면 전체 표현식이 false가 되고,
@@ -70,7 +72,7 @@ function Accommodate() {
 
                 아래 예제는 위와 똑같은 실행 결과를 보여줌.
             */}
-            {/*{userCount >= MAX_CAPACITY ? <p>수용시설에 정원이 가득 찼습니다.</p> : null*/}
+            {/* {count >= MAX_CAPACITY ? <p>수용시설에 정원이 가득 찼습니다.</p> : null} */}
         </div>
     );
 }
